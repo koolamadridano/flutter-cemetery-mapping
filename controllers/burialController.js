@@ -55,8 +55,8 @@ module.exports = {
             const lastName = req.query.lastName;
             const _select = { __v: 0 };
             return Data.find({
-                    "deceased.profile.firstName": { $regex: firstName, $options: "i" },
-                    "deceased.profile.lastName": { $regex: lastName, $options: "i" },
+                    "deceased.profile.firstName": { $regex: firstName + lastName, $options: "i" },
+                    "deceased.profile.lastName": { $regex: lastName  + lastName, $options: "i" },
                 })
                 .sort({ _id: -1 }) // filter by _id
                 .select(_select) // Do not return  __v and registrant
