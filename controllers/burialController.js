@@ -49,6 +49,23 @@ module.exports = {
             console.error(error);
         }
     },
+    async getAllBurialData(req, res) {
+         try {
+            const firstName = req.query.firstName;
+            const lastName = req.query.lastName;
+            const _select = { __v: 0 };
+            return Data.find({
+                    "deceased.profile.firstName": { $regex: firstName, $options: "i" },
+                    "deceased.profile.lastName": { $regex: lastName, $options: "i" },
+                })
+                .sort({ _id: -1 }) // filter by _id
+                .select(_select) // Do not return  __v and registrant
+                .then((value) => res.status(200).json(value))
+                .catch((err) => res.status(400).json(err));
+        } catch (error) {
+            console.error(error);
+        }
+    },
     async updateMovantData(req, res) {
         try {
             const _data = req.body;
