@@ -4,7 +4,7 @@ module.exports = {
     // [POST]
     async createBurialData(req, res) {
         try {
-            req.body.deceased.profile.completeName = req.body.deceased.profile.firstName + " " +  req.body.deceased.profile.lastName;
+            req.body.deceased.profile.completeName = req.body.deceased.profile.firstName + " " +  req.body.deceased.profile.middleInitial + " " +  req.body.deceased.profile.lastName;
             return new Data(req.body)
                 .save()
                 .then((value) => res.status(200).json(value))
