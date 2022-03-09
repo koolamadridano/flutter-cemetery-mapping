@@ -67,6 +67,9 @@ const DeceasedProfileSchema = new Schema({
     },
     deceased: {
         profile: {
+            completeName: {
+                type: String,
+            },
             firstName: {
                 type: String,
                 required: [true, "firstName is required"],
