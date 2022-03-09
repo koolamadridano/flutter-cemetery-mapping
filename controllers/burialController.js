@@ -52,12 +52,10 @@ module.exports = {
     },
     async getAllBurialData(req, res) {
          try {
-            const firstName = req.query.firstName;
-            const lastName = req.query.lastName;
+            const fullName = req.query.fullName;
             const _select = { __v: 0 };
             return Data.find({
-                    "deceased.profile.firstName": { $regex: firstName, $options: "i" },
-                    "deceased.profile.lastName": { $regex: lastName, $options: "i" },
+                    "deceased.profile.completeName": { $regex: fullName, $options: "i" },
                 })
                 .sort({ _id: -1 }) // filter by _id
                 .select(_select) // Do not return  __v and registrant
