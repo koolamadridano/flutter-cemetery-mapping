@@ -15,6 +15,12 @@ router.get("/burial", (req, res) => {
     burialController.getBurialData(req, res);
 });
 
+// [GET] api/burial/all
+// @Description: GET all burial data
+router.get("/burial/all", (req, res) => {
+    burialController.getAllBurialData(req, res);
+});
+
 // [PUT] api/burial/update-movant
 // @Description: UPDATE movant data
 router.put("/burial/update-movant", (req, res) => {
